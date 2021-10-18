@@ -236,3 +236,170 @@ resource "aws_ec2_transit_gateway_peering_attachment" "seoul-peering-singapore" 
     Name = "seoul-peering-singapore"
   }
 }
+
+  
+  
+  
+==============================================================================================================================================================================
+
+    
+resource "aws_vpc" "singapore" {
+  cidr_block = "10.3.0.0/16"
+
+  enable_dns_support = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "singapore_vpc"
+  }
+}
+
+
+resource "aws_subnet" "singapore_public_subnet1" {
+  vpc_id = aws_vpc.singapore.id
+  cidr_block = "10.3.1.0/24"
+
+  availability_zone = "ap-southeast-1a"
+
+  tags = {
+    Name = "singapore-public-subnet1"
+  }
+}
+
+
+resource "aws_subnet" "singapore_private_subnet1" {
+  vpc_id = aws_vpc.singapore.id
+  cidr_block = "10.3.3.0/24"
+
+  availability_zone = "ap-southeast-1a"
+
+  tags = {
+    Name = "singapore-private-subnet1"
+  }
+}
+
+resource "aws_subnet" "singapore_private_subnet2" {
+  vpc_id = aws_vpc.singapore.id
+  cidr_block = "10.3.4.0/24"
+
+  availability_zone = "ap-southeast-1c"
+
+  tags = {
+    Name = "singapore-private-subnet2"
+  }
+}
+
+
+resource "aws_subnet" "singapore_TGW_subnet1" {
+  vpc_id = aws_vpc.singapore.id
+
+  availability_zone = "ap-southeast-1a"
+
+  cidr_block = "10.3.5.0/24"
+  tags = {
+    Name = "singapore_TGW_subnet1"
+  }
+}
+
+
+resource "aws_subnet" "singapore_TGW_subnet2" {
+  vpc_id = aws_vpc.singapore.id
+
+  availability_zone = "ap-southeast-1c"
+
+  cidr_block = "10.3.6.0/24"
+  tags = {
+    Name = "singapore_TGW_subnet2"
+  }
+}
+
+
+
+
+resource "aws_internet_gateway" "singapore_igw" {
+  vpc_id = aws_vpc.singapore.id
+
+  tags = {
+    Name = "singapore-igw"
+  }
+}
+
+
+
+resource "aws_route_table" "singapore_public" {
+  vpc_id = aws_vpc.singapore.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.singapore_igw.id
+  }
+
+  tags = {
+    Name = "singapore-rt-public"
+
+  }
+}
+
+
+
+
+resource "aws_route_table_association" "route_table_association_public1" {
+  subnet_id = aws_subnet.singapore_public_subnet1.id
+  route_table_id = aws_route_table.singapore_public.id
+}
+
+
+resource "aws_vpc" "singapore_idc" {
+  cidr_block = "10.4.0.0/16"
+
+  enable_dns_support = true
+  enable_dns_hostnames = true
+
+
+  tags = {
+    Name = "singapore-idc"
+  }
+}
+
+
+resource "aws_subnet" "singapore_idc_subnet1" {
+  vpc_id = aws_vpc.singapore_idc.id
+  cidr_block = "10.4.1.0/24"
+
+  availability_zone = "ap-southeast-1a"
+
+  tags = {
+    Name = "singapore-idc-subnet1"
+  }
+}
+
+
+resource "aws_internet_gateway" "singapore_idc_igw" {
+  vpc_id = aws_vpc.singapore_idc.id
+
+  tags = {
+    Name = "singapore_idc-igw"
+  }
+}
+
+
+
+resource "aws_route_table" "singapore_idc_rt" {
+  vpc_id = aws_vpc.singapore_idc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.singapore_idc_igw.id
+  }
+
+  tags = {
+    Name = "singapore_idc-rt-public"
+
+  }
+}
+
+
+resource "aws_route_table_association" "route_table_association_singapore_idc" {
+  subnet_id = aws_subnet.singapore_idc_subnet1.id
+  route_table_id = aws_route_table.singapore_idc_rt.id
+}
