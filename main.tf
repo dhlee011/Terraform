@@ -242,7 +242,9 @@ resource "aws_ec2_transit_gateway_peering_attachment" "seoul-peering-singapore" 
   
 ==============================================================================================================================================================================
 
-    
+#싱가포르    
+  
+  
 resource "aws_vpc" "singapore" {
   cidr_block = "10.3.0.0/16"
 
@@ -402,4 +404,58 @@ resource "aws_route_table" "singapore_idc_rt" {
 resource "aws_route_table_association" "route_table_association_singapore_idc" {
   subnet_id = aws_subnet.singapore_idc_subnet1.id
   route_table_id = aws_route_table.singapore_idc_rt.id
+}
+
+
+resource "aws_customer_gateway" "singapore-cgw" {
+  bgp_asn    = 65000
+  ip_address = "52.79.153.58"
+  type       = "ipsec.1"
+
+  tags = {
+    Name = "singapore-cgw"
+  }
+}
+
+resource "aws_ec2_transit_gateway" "singapore_tgw" {
+  description = "singapore_tgw"
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "seoul_tgw_vpc" {
+  subnet_ids         = [aws_subnet.singapore_TGW_subnet1.id, aws_subnet.singapore_TGW_subnet2.id]
+  transit_gateway_id = aws_ec2_transit_gateway.singapore_tgw.id
+  vpc_id             = aws_vpc.singapore.id
+
+  tags = {
+    name = "singapore-tgw-vpc"
+
+  }
+}
+
+
+resource "aws_vpn_connection" "singapore-cgw_tgw" {
+  customer_gateway_id = aws_customer_gateway.singapore-cgw.id
+  transit_gateway_id  = aws_ec2_transit_gateway.singapore_tgw.id
+  type                = aws_customer_gateway.singapore-cgw.type
+
+  static_routes_only = true
+
+  tunnel1_preshared_key = "cloudneta"
+
+  tunnel2_preshared_key = "cloudneta"
+
+
+}
+
+
+data "aws_ec2_transit_gateway_vpn_attachment" "singapore-cgw-tgw" {
+  transit_gateway_id = aws_ec2_transit_gateway.singapore_tgw.id
+  vpn_connection_id  = aws_vpn_connection.singapore-cgw_tgw.id
+}
+
+
+resource "aws_ec2_transit_gateway_route" "singapore_tgw_route" {
+  destination_cidr_block         = "10.0.0.0/8"
+  transit_gateway_attachment_id  = data.aws_ec2_transit_gateway_vpn_attachment.singapore-cgw-tgw.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.singapore_tgw.association_default_route_table_id
 }
