@@ -20,14 +20,12 @@ resource "aws_lb_target_group" "alb_target" {
 }
 
 resource "aws_lb_target_group_attachment" "alb_target_attach" {
-count = length(var.availability_zones) # 2
   target_group_arn = aws_lb_target_group.alb_target.arn
   target_id        = aws_instance.web_instance1.id
   port             = 80
 }
 
 resource "aws_lb_target_group_attachment" "alb_target_attach2" {
-count = length(var.availability_zones) # 2
   target_group_arn = aws_lb_target_group.alb_target.arn
   target_id        = aws_instance.web_instance2.id
   port             = 80
