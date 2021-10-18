@@ -389,7 +389,7 @@ resource "aws_network_interface_sg_attachment" "seoul_idc_subnet1_sg_attachment3
 =============================================================================================================================================================================
   
 
-
+#싱가포르
 
 resource "aws_instance" "nat_instance_pub1" {
   ami = "ami-0096082b44d750d5d"
