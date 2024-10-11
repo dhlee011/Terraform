@@ -13,6 +13,13 @@ module "Dev_vpc" {
   subnets_names = var.Dev_subnet_name
 }
 
+module "Dev_ec2" {
+  source = "/terraform/Mod/Compute"
+  Bastion_ami = var.Dev_Bastion_ami 
+  Bastion_ec2_type = var.Dev_Bastion_ec2_type 
+  Bastion_subnet_id = module.Dev_vpc.subnets_id
 
+
+}
 
 

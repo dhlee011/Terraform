@@ -35,3 +35,8 @@ Dev_subnet_name = [
     "TGW_subnet-a",
     "TGW_subnet-c"
 ]
+
+Dev_Bastion_ami = ["ami-03439f5ccc1eeb443"]
+
+Dev_Bastion_ec2_type = ["t2.micro"] 
+
