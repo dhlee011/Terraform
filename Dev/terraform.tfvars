@@ -40,3 +40,9 @@ Dev_Bastion_ami = ["ami-03439f5ccc1eeb443"]
 
 Dev_Bastion_ec2_type = ["t2.micro"] 
 
+Dev_Bastion_port = 22
+
+Dev_Bastion_accpet_cidr = ["112.147.0.0/16"]
+
+Dev_Bastion_ec2_name = ["Dev_Bastion"]
+

@@ -35,3 +35,14 @@ variable "Dev_Bastion_ec2_type" {
   type = list(string)
 }
 
+variable "Dev_Bastion_ec2_name" {
+  type = list(string)
+}
+
+variable "Dev_Bastion_accpet_cidr" {
+  type = list(string)
+}
+
+variable "Dev_Bastion_port" {
+  type = number
+}

@@ -18,8 +18,12 @@ module "Dev_ec2" {
   Bastion_ami = var.Dev_Bastion_ami 
   Bastion_ec2_type = var.Dev_Bastion_ec2_type 
   Bastion_subnet_id = module.Dev_vpc.subnets_id
-
-
+  Bastion_port = var.Dev_Bastion_port
+  Bastion_accpet_cidr = var.Dev_Bastion_accpet_cidr
+  Bastion_ec2_name = var.Dev_Bastion_ec2_name
+  Dev_vpc_id = module.Dev_vpc.vpcs_id 
 }
+
+
 
 
