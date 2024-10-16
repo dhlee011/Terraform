@@ -21,7 +21,7 @@ variable "Bastion_accpet_cidr" {
 }
 
 variable "Bastion_ec2_name" {
-  type = list(string)
+  type = string
 }
 
 variable "Dev_vpc_id" {
