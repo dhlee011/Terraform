@@ -44,5 +44,5 @@ Dev_Bastion_port = 22
 
 Dev_Bastion_accpet_cidr = ["112.147.0.0/16"]
 
-Dev_Bastion_ec2_name = ["Dev_Bastion"]
+Dev_Bastion_ec2_name = "Dev_Bastion"
 
