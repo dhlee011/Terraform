@@ -36,10 +36,17 @@ resource "aws_route" "Ext_route" {
   gateway_id             = aws_internet_gateway.igw.id
 }
 
-# 라우팅 테이블과 서브넷 연결
+
 resource "aws_route_table_association" "Ext_table_assoc" {
   count = 2
   subnet_id      = aws_subnet.subnets[count.index].id
   route_table_id = aws_route_table.Ext_route_table.id
 }
 
+
+resource "aws_ec2_transit_gateway" "tgws" {
+  count = length(var.tgws_name)
+  tags = {
+    Name = var.tgws_name[count.index]
+  }  
+}

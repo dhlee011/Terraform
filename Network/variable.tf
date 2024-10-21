@@ -27,3 +27,6 @@ variable "subnets_names" {
   type = list(string)
 }
 
+variable "tgws_name" {
+  type = list(string)
+}

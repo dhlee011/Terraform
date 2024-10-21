@@ -3,5 +3,10 @@ output "vpcs_id" {
 }
 
 output "subnets_id" {
-  value = aws_subnet.subnets[*].id  # 모든 서브넷의 ID를 리스트로 반환
+  value = aws_subnet.subnets[*].id  
 }
+
+output "tgws_id" {
+  value = aws_ec2_transit_gateway.tgws[*].id  
+}
+
