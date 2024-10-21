@@ -16,8 +16,8 @@ Dev_az = [
 ]
 
 Dev_subnet = [
-    "ALB_subnet-a",
-    "ALB_subnet-c",
+    "EXT_subnet-a",
+    "EXT_subnet-c",
     "TGW_subnet-a",
     "TGW_subnet-c"
 ]
@@ -30,8 +30,8 @@ Dev_subnet_cidr = [
 ]
 
 Dev_subnet_name = [
-    "ALB_subnet-a",
-    "ALB_subnet-c",
+    "EXT_subnet-a",
+    "EXT_subnet-c",
     "TGW_subnet-a",
     "TGW_subnet-c"
 ]
@@ -46,3 +46,7 @@ Dev_Bastion_accpet_cidr = ["112.147.0.0/16"]
 
 Dev_Bastion_ec2_name = "Dev_Bastion"
 
+tgws_name = [
+    "Internal",
+    "External"
+]

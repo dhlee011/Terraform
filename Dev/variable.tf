@@ -46,3 +46,7 @@ variable "Dev_Bastion_accpet_cidr" {
 variable "Dev_Bastion_port" {
   type = number
 }
+
+variable "tgws_name" {
+  type = list(string)
+}

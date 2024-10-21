@@ -11,6 +11,7 @@ module "Dev_vpc" {
   subnets = var.Dev_subnet
   subnets_cidr = var.Dev_subnet_cidr
   subnets_names = var.Dev_subnet_name
+  tgws_name = var.tgws_name
 }
 
 module "Dev_ec2" {
@@ -23,7 +24,5 @@ module "Dev_ec2" {
   Bastion_ec2_name = var.Dev_Bastion_ec2_name
   Dev_vpc_id = module.Dev_vpc.vpcs_id 
 }
-
-
 
 
