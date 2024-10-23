@@ -2,27 +2,27 @@ provider "aws" {
   region = "ap-northeast-2" 
 }
 
-module "Dev_vpc" {
-  source = "/terraform/Mod/Network"
-  vpcs = var.Dev_vpc
-  vpcs_cidr = var.Dev_vpc_cidr
-  vpcs_names = var.Dev_vpc_name
+module "DevNetwork_vpc" {
+  source = "/terraform/Mod/Ldz/Network/"
+  vpcs = var.DevNetwork_vpc
+  vpcs_cidr = var.DevNetworkVpc_cidr
+  vpcs_names = var.DevNetworkVpc_name
   azs = var.Dev_az
-  subnets = var.Dev_subnet
-  subnets_cidr = var.Dev_subnet_cidr
-  subnets_names = var.Dev_subnet_name
+  subnets = var.DevNetworkVpc_subnet
+  subnets_cidr = var.DevNetworkVpcSubnet_cidr
+  subnets_names = var.DevNetworkVpcSubnet_name
   tgws_name = var.tgws_name
 }
 
-module "Dev_ec2" {
-  source = "/terraform/Mod/Compute"
+module "DevNetwork_ec2" {
+  source = "/terraform/Mod/Ldz/Compute"
   Bastion_ami = var.Dev_Bastion_ami 
   Bastion_ec2_type = var.Dev_Bastion_ec2_type 
-  Bastion_subnet_id = module.Dev_vpc.subnets_id
+  Bastion_subnet_id = module.DevNetwork_vpc.subnets_id
   Bastion_port = var.Dev_Bastion_port
   Bastion_accpet_cidr = var.Dev_Bastion_accpet_cidr
   Bastion_ec2_name = var.Dev_Bastion_ec2_name
-  Dev_vpc_id = module.Dev_vpc.vpcs_id 
+  Network_vpc_id = module.DevNetwork_vpc.vpcs_id 
 }
 
 

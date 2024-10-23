@@ -1,13 +1,13 @@
 
-variable "Dev_vpc" {
+variable "DevNetwork_vpc" {
   type = list(string)
 }
 
-variable "Dev_vpc_cidr" {
+variable "DevNetworkVpc_cidr" {
   type = list(string)
 }
 
-variable "Dev_vpc_name" {
+variable "DevNetworkVpc_name" {
   type = list(string)
 }
 
@@ -15,15 +15,15 @@ variable "Dev_az" {
   type = list(string)
 }
 
-variable "Dev_subnet" {
+variable "DevNetworkVpc_subnet" {
   type = list(string)
 }
 
-variable "Dev_subnet_cidr" {
+variable "DevNetworkVpcSubnet_cidr" {
   type = list(string)
 }
 
-variable "Dev_subnet_name" {
+variable "DevNetworkVpcSubnet_name" {
   type = list(string)
 }
 
@@ -48,5 +48,5 @@ variable "Dev_Bastion_port" {
 }
 
 variable "tgws_name" {
-  type = list(string)
+  type = string
 }

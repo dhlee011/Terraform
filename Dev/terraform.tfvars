@@ -1,13 +1,13 @@
-Dev_vpc = [
-    "Dev_vpc"
+DevNetwork_vpc = [
+    "DevNetwork_Vpc"
 ]
 
-Dev_vpc_cidr = [
+DevNetworkVpc_cidr = [
     "10.11.0.0/16"
 ]
 
-Dev_vpc_name =[
-    "Dev_VPC"
+DevNetworkVpc_name =[
+    "DevNetwork_Vpc"
 ]
 
 Dev_az = [
@@ -15,21 +15,21 @@ Dev_az = [
     "ap-northeast-2c"
 ]
 
-Dev_subnet = [
+DevNetworkVpc_subnet = [
     "EXT_subnet-a",
     "EXT_subnet-c",
     "TGW_subnet-a",
     "TGW_subnet-c"
 ]
 
-Dev_subnet_cidr = [
+DevNetworkVpcSubnet_cidr = [
     "10.11.1.0/24",
     "10.11.2.0/24",
     "10.11.11.0/24",
     "10.11.12.0/24"
 ]
 
-Dev_subnet_name = [
+DevNetworkVpcSubnet_name = [
     "EXT_subnet-a",
     "EXT_subnet-c",
     "TGW_subnet-a",
@@ -42,11 +42,8 @@ Dev_Bastion_ec2_type = ["t2.micro"]
 
 Dev_Bastion_port = 22
 
-Dev_Bastion_accpet_cidr = ["112.147.0.0/16"]
+Dev_Bastion_accpet_cidr = ["112.147.0.0/16", "118.235.0.0/16"]
 
 Dev_Bastion_ec2_name = "Dev_Bastion"
 
-tgws_name = [
-    "Internal",
-    "External"
-]
+tgws_name = "Internal"
