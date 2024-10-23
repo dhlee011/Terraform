@@ -24,7 +24,7 @@ variable "Bastion_ec2_name" {
   type = string
 }
 
-variable "Dev_vpc_id" {
+variable "Network_vpc_id" {
   type = list(string)
 }
 

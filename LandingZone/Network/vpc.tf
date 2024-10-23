@@ -45,8 +45,8 @@ resource "aws_route_table_association" "Ext_table_assoc" {
 
 
 resource "aws_ec2_transit_gateway" "tgws" {
-  count = length(var.tgws_name)
+  count = 1
   tags = {
-    Name = var.tgws_name[count.index]
+    Name = var.tgws_name
   }  
 }
