@@ -50,3 +50,20 @@ resource "aws_ec2_transit_gateway" "tgws" {
     Name = var.tgws_name
   }  
 }
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_att" {
+  count = 1
+  subnet_ids         = [ 
+    aws_subnet.subnets[2].id,
+    aws_subnet.subnets[3].id
+  ]
+
+  tags = {
+    Name = format("%s-%s", var.vpcs_names[0], var.tgws_name)
+  }
+
+  transit_gateway_id = aws_ec2_transit_gateway.tgws[0].id
+  vpc_id             = aws_vpc.vpcs[0].id
+}
+
+  

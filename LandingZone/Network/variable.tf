@@ -30,3 +30,7 @@ variable "subnets_names" {
 variable "tgws_name" {
   type = string
 }
+
+variable "service_cidr" {
+  type = list(string)
+}
