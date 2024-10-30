@@ -46,4 +46,4 @@ Prd_Bastion_accpet_cidr = ["112.147.0.0/16", "118.235.0.0/16"]
 
 Prd_Bastion_ec2_name = "Prd_Bastion"
 
-tgws_name = "External"
+#tgws_name = "External"

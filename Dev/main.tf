@@ -12,6 +12,8 @@ module "DevNetwork_vpc" {
   subnets_cidr = var.DevNetworkVpcSubnet_cidr
   subnets_names = var.DevNetworkVpcSubnet_name
   tgws_name = var.tgws_name
+  service_cidr = var.Dev_Service_cidr
+  account_id = var.DevSvc_accountid
 }
 
 module "DevNetwork_ec2" {
@@ -25,4 +27,4 @@ module "DevNetwork_ec2" {
   Network_vpc_id = module.DevNetwork_vpc.vpcs_id 
 }
 
-
+data "aws_caller_identity" "current" {}

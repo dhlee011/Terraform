@@ -1,4 +1,3 @@
-
 variable "DevNetwork_vpc" {
   type = list(string)
 }
@@ -50,3 +49,12 @@ variable "Dev_Bastion_port" {
 variable "tgws_name" {
   type = string
 }
+
+variable "Dev_Service_cidr" {
+  type = list(string)
+}
+
+variable "DevSvc_accountid" {
+  type = list(string)
+}
+

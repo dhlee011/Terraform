@@ -46,4 +46,6 @@ Dev_Bastion_accpet_cidr = ["112.147.0.0/16", "118.235.0.0/16"]
 
 Dev_Bastion_ec2_name = "Dev_Bastion"
 
-tgws_name = "Internal"
+tgws_name = "External"
+
+Dev_Service_cidr = ["30.33.0.0/16"]

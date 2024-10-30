@@ -11,7 +11,7 @@ module "PrdNetwork_vpc" {
   subnets = var.PrdNetworkVpc_subnet
   subnets_cidr = var.PrdNetworkVpcSubnet_cidr
   subnets_names = var.PrdNetworkVpcSubnet_name
-  tgws_name = var.tgws_name
+#  tgws_name = var.tgws_name
 }
 
 module "PrdNetwork_ec2" {
