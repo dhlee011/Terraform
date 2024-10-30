@@ -66,4 +66,22 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_att" {
   vpc_id             = aws_vpc.vpcs[0].id
 }
 
-  
+resource "aws_ram_resource_share" "tgw_share" {
+  name = "tgw_share"
+  allow_external_principals = true
+
+  tags = {
+    Name = "tgw_share"
+  }
+}
+
+resource "aws_ram_principal_association" "tgw_principal" {
+  resource_share_arn = aws_ram_resource_share.tgw_share.arn
+  principal          = var.account_id[0]  
+}
+
+resource "aws_ram_resource_association" "tgw_resource" {
+  resource_share_arn = aws_ram_resource_share.tgw_share.arn
+  resource_arn       = aws_ec2_transit_gateway.tgws[0].arn
+}
+
