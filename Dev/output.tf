@@ -13,3 +13,7 @@ output "tgws_id" {
 output "account_id" {
   value       = data.aws_caller_identity.current.account_id
 }
+
+output "tgwshare_id" {
+  value = module.DevNetwork_vpc.tgwshare_id
+}
