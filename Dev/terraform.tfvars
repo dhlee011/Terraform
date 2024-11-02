@@ -36,3 +36,5 @@ DevSvcVpcSubnet_name = [
     "TGW_subnet-c"
 ]
 
+tgw_name = "External"
+

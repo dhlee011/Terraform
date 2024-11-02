@@ -26,3 +26,18 @@ variable "DevSvcVpcSubnet_name" {
   type = list(string)
 }
 
+variable "tgw_name" {
+  type = string
+}
+
+variable "bucket" {
+  type = string
+}
+
+variable "LdzBucket_key" {
+  type = string
+}
+
+variable "region" {
+  type = string
+}
