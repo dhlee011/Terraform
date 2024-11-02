@@ -10,3 +10,7 @@ output "tgws_id" {
   value = aws_ec2_transit_gateway.tgws[*].id  
 }
 
+output "tgwshare_id" {
+  value = aws_ram_resource_share.tgw_share.id
+}
+

@@ -46,6 +46,9 @@ resource "aws_route_table_association" "Ext_table_assoc" {
 
 resource "aws_ec2_transit_gateway" "tgws" {
   count = 1
+    auto_accept_shared_attachments = "enable"  
+    default_route_table_association = "enable"
+    default_route_table_propagation = "enable"
   tags = {
     Name = var.tgws_name
   }  

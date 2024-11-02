@@ -27,10 +27,15 @@ variable "subnets_names" {
   type = list(string)
 }
 
-#variable "tgws_name" {
-#  type = string
-#}
+variable "tgw_name" {
+  type = string
+}
 
-#variable "service_cidr" {
-#  type = list(string)
-#}
+variable "tgw_share_arn" {
+  type = string
+}
+
+variable "tgw_id" {
+  type = list(string)
+}
+

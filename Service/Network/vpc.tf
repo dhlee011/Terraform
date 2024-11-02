@@ -18,3 +18,21 @@ resource "aws_subnet" "subnets" {
   }
 }
 
+resource "aws_ram_resource_share_accepter" "tgw_share_accepter" {
+  share_arn = var.tgw_share_arn
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_att" {
+  count = 1
+  subnet_ids         = [ 
+    aws_subnet.subnets[2].id,
+    aws_subnet.subnets[3].id
+  ]
+
+  tags = {
+    Name = format("%s-%s", var.vpcs_names[0], var.tgw_name)
+  }
+
+  transit_gateway_id = var.tgw_id[0]
+  vpc_id             = aws_vpc.vpcs[0].id
+}
