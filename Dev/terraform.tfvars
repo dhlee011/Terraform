@@ -38,3 +38,14 @@ DevSvcVpcSubnet_name = [
 
 tgw_name = "External"
 
+DevSvcEksClster_name = "DevEks_cluster"
+
+DevSvcEksNodeGroup_name = "DevEks_nodegroup"
+
+DevSvcLaunch_template = "DevSvcLaunch_template"
+
+DevSvcEksNode_ami = "ami-036ff9e6d58a3c148"
+
+Dev_Bastion_ami = "ami-03439f5ccc1eeb443"
+
+Dev_Bastion_ec2_name = "DevSvc_Bastion"

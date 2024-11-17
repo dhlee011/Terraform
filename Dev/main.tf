@@ -34,5 +34,16 @@ module "DevSvc_vpc" {
   tgw_share_arn = data.terraform_remote_state.tgw_share_arn.outputs.tgwshare_id
   tgw_id = data.terraform_remote_state.tgw_id.outputs.tgws_id
   tgw_name = var.tgw_name
+}
 
+module "DevSvc_compute" {
+  source = "/terraform/Mod/Svc/Compute/"
+  eks_vpc = module.DevSvc_vpc.vpcs_id
+  eks_subnet = module.DevSvc_vpc.subnets_id
+  ekscluster_name = var.DevSvcEksClster_name
+  eksnodegroup_name = var.DevSvcEksNodeGroup_name
+  launch_template = var.DevSvcLaunch_template
+  eksNode_ami = var.DevSvcEksNode_ami
+  Bastion_ami = var.Dev_Bastion_ami
+  Bastion_ec2_name = var.Dev_Bastion_ec2_name
 }

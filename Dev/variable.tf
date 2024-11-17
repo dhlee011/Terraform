@@ -41,3 +41,28 @@ variable "LdzBucket_key" {
 variable "region" {
   type = string
 }
+
+variable "DevSvcEksClster_name" {
+  type = string
+}
+
+variable "DevSvcEksNodeGroup_name" {
+  type = string
+}
+
+variable "DevSvcLaunch_template" {
+  type = string
+}
+
+variable "DevSvcEksNode_ami" {
+  type = string
+}
+
+variable "Dev_Bastion_ami" {
+  type = string
+}
+
+variable "Dev_Bastion_ec2_name" {
+  type = string
+}
+
