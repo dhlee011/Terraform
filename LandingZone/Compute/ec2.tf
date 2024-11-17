@@ -23,7 +23,7 @@ resource "aws_security_group" "Bastion_sg" {
     protocol    = "tcp"
     cidr_blocks = [var.Bastion_accpet_cidr[0]]
   }
-  ingress {
+  ingress { ################################################ 11.17 변경 필요
     from_port   = var.Bastion_port
     to_port     = var.Bastion_port
     protocol    = "tcp"

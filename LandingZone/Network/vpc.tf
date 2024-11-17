@@ -1,4 +1,3 @@
-
 resource "aws_vpc" "vpcs" {
   count = length(var.vpcs)   
   cidr_block = var.vpcs_cidr[count.index]
@@ -36,13 +35,11 @@ resource "aws_route" "Ext_route" {
   gateway_id             = aws_internet_gateway.igw.id
 }
 
-
 resource "aws_route_table_association" "Ext_table_assoc" {
   count = 2
   subnet_id      = aws_subnet.subnets[count.index].id
   route_table_id = aws_route_table.Ext_route_table.id
 }
-
 
 resource "aws_ec2_transit_gateway" "tgws" {
   count = 1
@@ -87,4 +84,3 @@ resource "aws_ram_resource_association" "tgw_resource" {
   resource_share_arn = aws_ram_resource_share.tgw_share.arn
   resource_arn       = aws_ec2_transit_gateway.tgws[0].arn
 }
-
